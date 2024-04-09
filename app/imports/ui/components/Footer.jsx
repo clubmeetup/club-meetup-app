@@ -6,7 +6,7 @@ const Footer = () => (
   <footer className="footer mt-auto py-3 bg-dark">
     <Container>
       <Col className="text-center" style={{ color: 'white' }}>
-        The Bowfolios Project
+        Club UP
         {' '}
         <br />
         University of Hawaii
