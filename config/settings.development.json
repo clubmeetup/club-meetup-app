@@ -1,4 +1,8 @@
 {
+  "monti": {
+    "appId": "uJLrjqm4GY2MqTqXB",
+    "appSecret": "0ba0c210-ae1a-4f5d-90f3-fa8bb11b5360"
+  },
   "defaultProfiles": [
     {
       "firstName": "Philip",
@@ -132,3 +136,4 @@
   ],
   "loadAssetsFile":  false
 }
+
