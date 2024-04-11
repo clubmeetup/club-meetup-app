@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function FeatureRequestForm() {
+const FeatureRequestForm = () => {
   const [feature, setFeature] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -8,10 +8,6 @@ function FeatureRequestForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission here (e.g., send data to server)
-    console.log('Feature:', feature);
-    console.log('Name:', name);
-    console.log('Email:', email);
-    // Clear form fields after submission
     setFeature('');
     setName('');
     setEmail('');
@@ -21,6 +17,7 @@ function FeatureRequestForm() {
     <div className="container">
       <h1>Request a Feature</h1>
       <form onSubmit={handleSubmit}>
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label htmlFor="feature">Feature Request:</label>
         <textarea
           id="feature"
@@ -28,8 +25,9 @@ function FeatureRequestForm() {
           onChange={(e) => setFeature(e.target.value)}
           rows="5"
           required
-        ></textarea>
+        />
 
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label htmlFor="name">Your Name:</label>
         <input
           type="text"
@@ -39,6 +37,7 @@ function FeatureRequestForm() {
           required
         />
 
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label htmlFor="email">Your Email:</label>
         <input
           type="email"
@@ -52,6 +51,6 @@ function FeatureRequestForm() {
       </form>
     </div>
   );
-}
+};
 
 export default FeatureRequestForm;
