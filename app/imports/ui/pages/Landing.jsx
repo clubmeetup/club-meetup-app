@@ -17,10 +17,10 @@ const Landing = () => (
     </div>
     <div className="landing-white-background">
       <Container className="justify-content-center text-center">
-        <h2 style={{ color: '#376551' }}>Sign in with your UH account</h2>
+        <h2 style={{ color: 'black' }}>Sign in with your UH account</h2>
         <Row md={1} lg={2}>
           <Col xs={6}>
-            <Image src="/images/home-page.png" width={500} />
+            <Image src="/images/home-page.png" width={500} style={{ paddingBottom: '20px' }} />
           </Col>
           <Col xs={6}>
             <Image src="/images/profiles-page.png" width={500} />
@@ -33,7 +33,7 @@ const Landing = () => (
         <h2 style={{ color: 'white' }}>...add your interests</h2>
         <Row md={1} lg={2}>
           <Col xs={6}>
-            <Image src="/images/add-project-page.png" width={500} />
+            <Image src="/images/add-project-page.png" width={500} style={{ paddingBottom: '20px' }} />
           </Col>
           <Col xs={6}>
             <Image src="/images/projects-page.png" width={500} />
@@ -42,13 +42,13 @@ const Landing = () => (
       </Container>
     </div>
     <div className="landing-white-background text-center">
-      <h2 style={{ color: '#376551' }}>
+      <h2 style={{ color: 'black' }}>
         Browse around and find the right club for you!
       </h2>
       <Container>
         <Row md={1} lg={2}>
           <Col xs={6}>
-            <Image src="/images/interests-page.png" width={500} />
+            <Image src="/images/interests-page.png" width={500} style={{ paddingBottom: '20px' }} />
           </Col>
           <Col xs={6}>
             <Image src="/images/filter-page.png" width={500} />
