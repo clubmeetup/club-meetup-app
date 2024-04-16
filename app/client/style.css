@@ -3,8 +3,8 @@
 
 /* Create some Bowfolio CSS variables. */
 :root {
-  --bowfolio-navbar-bg: #959DBD;
-  --bowfolio-navbar-bg-rgb: 149, 157, 189;
+  --bowfolio-navbar-bg: #024731;
+  --bowfolio-navbar-bg-rgb: 2,71,49;
   --bowfolio-navbar-text: white;
   --bowfolio-navbar-highlight-text: var(--bs-gray-500);
 }
@@ -38,7 +38,7 @@ body {
 
 /* Landing page color blocking */
 .landing-green-background {
-  background-color: var(--bowfolio-navbar-bg);
+  background-color: #c8c8c8;
   color: var(--bowfolio-navbar-text);
   padding-top: 20px;
 }
