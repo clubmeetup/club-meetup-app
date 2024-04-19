@@ -42,20 +42,19 @@ body {
   /* Correct syntax for a linear gradient background */
   background: linear-gradient(to bottom, #024731, #56ab2f);
   /* Continue with the rest of your styles */
-  color: var(--bowfolio-navbar-text);
-  padding-top: 20px;
 }
-
-
-.landing-white-background {
-  background-color: var(--bowfolio-navbar-text);
-  color: var(--bowfolio-navbar-bg);
-  padding-top: 20px;
+.custom-padding {
+  padding: 20px; /* Adjust the padding as needed */
 }
-
 .reset-margins {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.carousel img {
+  width: 100%; /* Makes the image responsive */
+  height: 500px; /* Adjust the height as needed */
+  object-fit: contain; /* Ensures the image covers the area without stretching */
 }
 
 * {
@@ -64,9 +63,6 @@ body {
   box-sizing: border-box;
 }
 
-body {
-  background: #f2f2f2;
-}
 
 /*@keyframes slide {*/
 /*  from {*/
