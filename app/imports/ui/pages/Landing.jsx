@@ -2,6 +2,16 @@ import React from 'react';
 import { Container, Image, Carousel } from 'react-bootstrap';
 import { PageIDs } from '../utilities/ids';
 
+const customCaptionStyle = {
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)', // Optional: adds a semi-transparent background to the text for better visibility
+  color: 'white',
+  padding: '10px',
+  borderTopLeftRadius: '5px', // Optional: rounds the top-left corner for aesthetic purposes
+};
+
 const Landing = () => (
   <div id={PageIDs.landingPage}>
     <div className="landing-green-background">
@@ -15,26 +25,33 @@ const Landing = () => (
         {/* Carousel starts here */}
         <Carousel>
           <Carousel.Item>
-            <Image src="images/club.jpg" width={800} className="mx-auto d-block custom-padding" />
-            <Carousel.Caption>
-              <h3 style={{ paddingBottom: '200px', color: '#024731' }}>
-                Clubs at U.H Manoa that are eager for you to join
-              </h3>
+            <Image src="images/club.jpg" width={600} className="mx-auto d-block custom-padding" />
+            <Carousel.Caption style={{ ...customCaptionStyle, top: '0', left: '0', right: 'auto', bottom: 'auto' }}>
+              <h4> Club Info</h4>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-            <Image src="images/club2.jpg" width={800} className="mx-auto d-block custom-padding" />
-            <Carousel.Caption>
-              <h3>Sailing Club</h3>
-              <p>Face the ocean in this thrilling and fun club</p>
+            <Image src="images/club2.jpg" width={600} className="mx-auto d-block custom-padding" />
+            <Carousel.Caption style={{ ...customCaptionStyle, top: '0', left: '0', right: 'auto', bottom: 'auto' }}>
+              <h4>Sailing Club</h4>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             <Image src="images/club3.jpg" width={600} className="mx-auto d-block custom-padding" />
-            <Carousel.Caption>
-              <h3 style={{ paddingBottom: '200px', color: '#024731' }}>
-                Clubs at U.H Manoa that are eager for you to join
-              </h3>
+            <Carousel.Caption style={{ ...customCaptionStyle, top: '0', left: '0', right: 'auto', bottom: 'auto' }}>
+              <h4>Judo Club</h4>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <Image src="images/club4.jpg" width={600} className="mx-auto d-block custom-padding" />
+            <Carousel.Caption style={{ ...customCaptionStyle, top: '0', left: '0', right: 'auto', bottom: 'auto' }}>
+              <h4>Pre-Veterinary Club</h4>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <Image src="images/club5.jpg" width={600} className="mx-auto d-block custom-padding" />
+            <Carousel.Caption style={{ ...customCaptionStyle, top: '0', left: '0', right: 'auto', bottom: 'auto' }}>
+              <h4>Student Organic Club </h4>
             </Carousel.Caption>
           </Carousel.Item>
           {/* Add more Carousel.Item blocks for additional slides */}

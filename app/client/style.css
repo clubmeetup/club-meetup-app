@@ -41,6 +41,7 @@ body {
 .landing-green-background {
   /* Correct syntax for a linear gradient background */
   background: linear-gradient(to bottom, #024731, #56ab2f);
+  object-fit: cover;
   /* Continue with the rest of your styles */
 }
 .custom-padding {
@@ -56,7 +57,7 @@ body {
   height: 500px; /* Adjust the height as needed */
   object-fit: contain; /* Ensures the image covers the area without stretching */
 }
-
+  
 * {
   margin: 0;
   padding: 0;
