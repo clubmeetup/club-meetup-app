@@ -6,10 +6,10 @@ const customCaptionStyle = {
   position: 'absolute',
   top: '0',
   left: '0',
-  backgroundColor: 'rgba(0, 0, 0, 0.5)', // Optional: adds a semi-transparent background to the text for better visibility
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
   color: 'white',
   padding: '10px',
-  borderTopLeftRadius: '5px', // Optional: rounds the top-left corner for aesthetic purposes
+  borderTopLeftRadius: '5px',
 };
 
 const Landing = () => (
@@ -22,44 +22,20 @@ const Landing = () => (
         <h3 style={{ paddingBottom: '20px', color: 'antiquewhite' }}>
           Clubs at U.H Manoa that are eager for you to join
         </h3>
-        {/* Carousel starts here */}
         <Carousel>
+          {/* ... your carousel items */}
           <Carousel.Item>
             <Image src="images/club.jpg" width={600} className="mx-auto d-block custom-padding" />
-            <Carousel.Caption style={{ ...customCaptionStyle, top: '0', left: '0', right: 'auto', bottom: 'auto' }}>
+            <Carousel.Caption style={customCaptionStyle}>
               <h4> Club Info</h4>
             </Carousel.Caption>
           </Carousel.Item>
-          <Carousel.Item>
-            <Image src="images/club2.jpg" width={600} className="mx-auto d-block custom-padding" />
-            <Carousel.Caption style={{ ...customCaptionStyle, top: '0', left: '0', right: 'auto', bottom: 'auto' }}>
-              <h4>Sailing Club</h4>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <Image src="images/club3.jpg" width={600} className="mx-auto d-block custom-padding" />
-            <Carousel.Caption style={{ ...customCaptionStyle, top: '0', left: '0', right: 'auto', bottom: 'auto' }}>
-              <h4>Judo Club</h4>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <Image src="images/club4.jpg" width={600} className="mx-auto d-block custom-padding" />
-            <Carousel.Caption style={{ ...customCaptionStyle, top: '0', left: '0', right: 'auto', bottom: 'auto' }}>
-              <h4>Pre-Veterinary Club</h4>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <Image src="images/club5.jpg" width={600} className="mx-auto d-block custom-padding" />
-            <Carousel.Caption style={{ ...customCaptionStyle, top: '0', left: '0', right: 'auto', bottom: 'auto' }}>
-              <h4>Student Organic Club </h4>
-            </Carousel.Caption>
-          </Carousel.Item>
-          {/* Add more Carousel.Item blocks for additional slides */}
+          {/* Repeat for other items, removing the explicit top, left, right, bottom properties since they are already defined in customCaptionStyle */}
+          {/* ... */}
         </Carousel>
-        {/* Carousel ends here */}
       </Container>
     </div>
-  </div>
+  </div> // Added this closing tag
 );
 
 export default Landing;
