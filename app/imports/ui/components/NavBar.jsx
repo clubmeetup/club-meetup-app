@@ -28,7 +28,7 @@ const NavBar = () => {
               <Nav.Link as={NavLink} id={ComponentIDs.homeMenuItem} to="/home" key="home">Home</Nav.Link>
             ) : ''}
             <Nav.Link as={NavLink} id={ComponentIDs.profilesMenuItem} to="/profiles" key="profiles">Profiles</Nav.Link>
-            <Nav.Link as="a" href="https://clubmeetup.github.io/clublist/" target="_blank" rel="noopener noreferrer">Club List</Nav.Link>
+            <Nav.Link as={NavLink} id={ComponentIDs.projectsMenuItem} to="/clublist" key="projects">Club List</Nav.Link>
             <Nav.Link as={NavLink} id={ComponentIDs.interestsMenuItem} to="/interests" key="interests">Interests</Nav.Link>
             <Nav.Link as={NavLink} id={ComponentIDs.projectsMenuItem} to="/featurerequest" key="featurerequest">Feature Request</Nav.Link>
             {currentUser ? (
