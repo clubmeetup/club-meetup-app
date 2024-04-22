@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Image, Carousel, Button } from 'react-bootstrap'; // Import Button from react-bootstrap
 import { PageIDs } from '../utilities/ids';
-import ClubsList from './ClubsList';
 
 const customCaptionStyle = {
   position: 'absolute',
@@ -23,9 +22,6 @@ const Landing = () => (
         <h3 style={{ paddingBottom: '20px', color: 'antiquewhite' }}>
           Clubs at U.H Manoa that are eager for you to join
         </h3>
-        <Button href="https://clubmeetup.github.io/clublist/" target="_blank" rel="noopener noreferrer" variant="primary" className="my-3">
-          Visit Full Club List
-        </Button>
         <Carousel>
           <Carousel.Item>
             <Image src="images/club.jpg" width={600} className="mx-auto d-block custom-padding" />
@@ -58,7 +54,6 @@ const Landing = () => (
             </Carousel.Caption>
           </Carousel.Item>{/* Carousel items */}
         </Carousel>
-        <ClubsList /> {/* Local list of clubs */}
       </Container>
     </div>
   </div>
