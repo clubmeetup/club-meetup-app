@@ -22,8 +22,8 @@ const Landing = () => (
         </h1>
         <h3 style={{ paddingBottom: '20px', color: 'antiquewhite' }}>
           Clubs at U.H Manoa that are eager for you to join
+          <ClubDirectory />
         </h3>
-        <ClubDirectory /> {/* Link to the Club List */}
         <Carousel>
           <Carousel.Item>
             <Image src="images/club.jpg" width={600} className="mx-auto d-block custom-padding" />
