@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Image, Carousel, Button } from 'react-bootstrap'; // Import Button from react-bootstrap
+import { Container, Image, Carousel } from 'react-bootstrap'; // Import Button from react-bootstrap
 import { PageIDs } from '../utilities/ids';
 
 const customCaptionStyle = {

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Club from '../pages/Club';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import NotFound from '../pages/NotFound';
@@ -31,7 +32,7 @@ const App = () => (
         <Route path="/interests" element={<Interests />} />
         <Route path="/profiles" element={<Profiles />} />
         <Route path="/clublist" element={<Projects />} />
-        <Route path="/club" element={<Navigate to="https://clubmeetup.github.io/clublist/" replace />} />
+        <Route path="/club" element={<Club />} />
         <Route path="/featurerequest" element={<FeatureRequest />} />
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/filter" element={<ProtectedRoute><Filter /></ProtectedRoute>} />
