@@ -31,6 +31,7 @@ const App = () => (
         <Route path="/interests" element={<Interests />} />
         <Route path="/profiles" element={<Profiles />} />
         <Route path="/clublist" element={<Projects />} />
+        <Route path="/club" element={<Navigate to="https://clubmeetup.github.io/clublist/" replace />} />
         <Route path="/featurerequest" element={<FeatureRequest />} />
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/filter" element={<ProtectedRoute><Filter /></ProtectedRoute>} />
