@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Image, Carousel } from 'react-bootstrap';
 import { PageIDs } from '../utilities/ids';
-import ClubDirectory from './Club Directory';
+import ClubsList from './ClubsList';
 
 const customCaptionStyle = {
   position: 'absolute',
@@ -22,7 +22,6 @@ const Landing = () => (
         </h1>
         <h3 style={{ paddingBottom: '20px', color: 'antiquewhite' }}>
           Clubs at U.H Manoa that are eager for you to join
-          <ClubDirectory />
         </h3>
         <Carousel>
           <Carousel.Item>
@@ -56,6 +55,7 @@ const Landing = () => (
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
+        <ClubsList /> {/* Added ClubsList here */}
       </Container>
     </div>
   </div>
