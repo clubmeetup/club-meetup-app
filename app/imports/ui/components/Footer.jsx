@@ -15,6 +15,7 @@ const Footer = () => (
         {' '}
         <br />
         <a style={{ color: 'white' }} href="https://clubmeetup.github.io/">https://clubmeetup.github.io</a>
+        <a style={{ color: 'white' }} href="https://clubmeetup.github.io/clublist/">Club Directory/</a>
       </Col>
     </Container>
   </footer>

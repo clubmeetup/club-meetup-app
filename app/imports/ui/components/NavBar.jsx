@@ -19,7 +19,6 @@ const NavBar = () => {
       <Container>
         <Navbar.Brand as={NavLink} to="/" className="align-items-center">
           <span style={{ fontWeight: 800, fontSize: '24px' }}><Image src="/images/logo.png" width={60} style={{ marginBottom: 3 }} /> Club UP</span>
-
         </Navbar.Brand>
         <Navbar.Toggle aria-controls={ComponentIDs.basicNavbarNav} />
         <Navbar.Collapse id={ComponentIDs.basicNavbarNav}>
