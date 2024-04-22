@@ -24,7 +24,7 @@ const Landing = () => (
         </h3>
         {/* Link to the Club List */}
         <a href="https://clubmeetup.github.io/clublist/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-          Club List
+          Clubs At Manoa
         </a>
         <Carousel>
           <Carousel.Item>
