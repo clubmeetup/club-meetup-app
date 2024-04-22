@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Image, Carousel } from 'react-bootstrap';
+import { Container, Image, Carousel, Button } from 'react-bootstrap'; // Import Button from react-bootstrap
 import { PageIDs } from '../utilities/ids';
 import ClubsList from './ClubsList';
 
@@ -23,6 +23,9 @@ const Landing = () => (
         <h3 style={{ paddingBottom: '20px', color: 'antiquewhite' }}>
           Clubs at U.H Manoa that are eager for you to join
         </h3>
+        <Button href="https://clubmeetup.github.io/clublist/" target="_blank" rel="noopener noreferrer" variant="primary" className="my-3">
+          Visit Full Club List
+        </Button>
         <Carousel>
           <Carousel.Item>
             <Image src="images/club.jpg" width={600} className="mx-auto d-block custom-padding" />
@@ -53,9 +56,9 @@ const Landing = () => (
             <Carousel.Caption style={{ ...customCaptionStyle, top: '0', left: '0', right: 'auto', bottom: 'auto' }}>
               <h4>Student Organic Club </h4>
             </Carousel.Caption>
-          </Carousel.Item>
+          </Carousel.Item>{/* Carousel items */}
         </Carousel>
-        <ClubsList /> {/* Added ClubsList here */}
+        <ClubsList /> {/* Local list of clubs */}
       </Container>
     </div>
   </div>
