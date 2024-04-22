@@ -21,6 +21,7 @@ const Landing = () => (
         </h1>
         <h3 style={{ paddingBottom: '20px', color: 'antiquewhite' }}>
           Clubs at U.H Manoa that are eager for you to join
+          (LOL)[https://clubmeetup.github.io/clublist/]
         </h3>
         {/* Link to the Club List */}
         <a href="https://clubmeetup.github.io/clublist/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
