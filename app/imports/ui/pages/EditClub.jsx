@@ -42,7 +42,7 @@ const EditClub = () => {
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={10}>
-          <Col className="text-center"><h2>Edit Contact</h2></Col>
+          <Col className="text-center"><h2>Edit Club Information</h2></Col>
           <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
             <Card>
               <Card.Body>
