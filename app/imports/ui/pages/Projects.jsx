@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Badge, Container, Card, Button, Row, Col } from 'react-bootstrap';
+import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
@@ -26,6 +26,7 @@ const MakeCard = ({ project }) => {
   const navigate = useNavigate();
 
   const handleEdit = () => {
+    // eslint-disable-next-line react/prop-types
     navigate(`/editclub/${project._id}`);
   };
 

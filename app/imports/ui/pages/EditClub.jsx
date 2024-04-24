@@ -1,7 +1,7 @@
 import React from 'react';
 import swal from 'sweetalert';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, HiddenField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -32,8 +32,8 @@ const EditClub = () => {
   // console.log('EditClub', doc, ready);
   // On successful submit, insert the data.
   const submit = (data) => {
-    const { firstName, lastName, address, image, description } = data;
-    Projects.collection.update(_id, { $set: { firstName, lastName, address, image, description } }, (error) => (error ?
+    const { name, homepage, description, picture } = data;
+    Projects.collection.update(_id, { $set: { name, homepage, description, picture } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   };
@@ -47,17 +47,15 @@ const EditClub = () => {
             <Card>
               <Card.Body>
                 <Row>
-                  <Col><TextField name="firstName" /></Col>
-                  <Col><TextField name="lastName" /></Col>
+                  <Col><TextField name="name" /></Col>
                 </Row>
                 <Row>
-                  <Col><TextField name="address" /></Col>
-                  <Col><TextField name="image" /></Col>
+                  <Col><TextField name="homepage" /></Col>
+                  <Col><TextField name="picture" /></Col>
                 </Row>
                 <LongTextField name="description" />
                 <SubmitField value="Submit" />
                 <ErrorsField />
-                <HiddenField name="owner" />
               </Card.Body>
             </Card>
           </AutoForm>
