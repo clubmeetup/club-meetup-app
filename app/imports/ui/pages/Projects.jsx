@@ -1,9 +1,10 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Badge, Container, Card, Image, Row, Col } from 'react-bootstrap';
+import { Badge, Container, Card, Button, Row, Col } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
+import { useNavigate } from 'react-router-dom';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
@@ -21,29 +22,28 @@ function getProjectData(name) {
   return _.extend({}, data, { interests, participants: profilePictures });
 }
 
-/* Component for layout out a Project Card. */
-const MakeCard = ({ project }) => (
-  <Col>
-    <Card className="h-100">
-      <Card.Body>
-        <Card.Img src={project.picture} width={50} />
-        <Card.Title style={{ marginTop: '0px' }}>{project.name}</Card.Title>
-        <Card.Subtitle>
-          <span className="date">{project.title}</span>
-        </Card.Subtitle>
-        <Card.Text>
-          {project.description}
-        </Card.Text>
-      </Card.Body>
-      <Card.Body>
-        {project.interests.map((interest, index) => <Badge key={index} bg="info">{interest}</Badge>)}
-      </Card.Body>
-      <Card.Body>
-        {project.participants.map((p, index) => <Image key={index} roundedCircle src={p} width={50} />)}
-      </Card.Body>
-    </Card>
-  </Col>
-);
+const MakeCard = ({ project }) => {
+  const navigate = useNavigate();
+
+  const handleEdit = () => {
+    navigate(`/editclub/${project._id}`);
+  };
+
+  return (
+    <Col>
+      <Card className="h-100">
+        <Card.Body>
+          <Card.Img src={project.picture} width={50} />
+          <Card.Title>{project.name}</Card.Title>
+          <Card.Subtitle>{project.title}</Card.Subtitle>
+          <Card.Text>{project.description}</Card.Text>
+          <Button onClick={handleEdit}>Edit</Button>
+        </Card.Body>
+        {/* other card parts */}
+      </Card>
+    </Col>
+  );
+};
 
 MakeCard.propTypes = {
   project: PropTypes.shape({
