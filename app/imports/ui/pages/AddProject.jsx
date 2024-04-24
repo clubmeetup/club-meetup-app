@@ -73,17 +73,14 @@ const AddProject = () => {
             <Card>
               <Card.Body>
                 <Row>
-                  <Col xs={4}><TextField id={ComponentIDs.addProjectFormName} name="name" showInlineError placeholder="Project name" /></Col>
-                  <Col xs={4}><TextField id={ComponentIDs.addProjectFormPicture} name="picture" showInlineError placeholder="Project picture URL" /></Col>
+                  <Col xs={4}><TextField id={ComponentIDs.addProjectFormName} name="name" showInlineError placeholder="Club name" /></Col>
+                  <Col xs={4}><TextField id={ComponentIDs.addProjectFormPicture} name="picture" showInlineError placeholder="Club picture URL" /></Col>
                   <Col xs={4}><TextField id={ComponentIDs.addProjectFormHomePage} name="homepage" showInlineError placeholder="Homepage URL" /></Col>
                 </Row>
-                <LongTextField id={ComponentIDs.addProjectFormDescription} name="description" placeholder="Describe the project here" />
+                <LongTextField id={ComponentIDs.addProjectFormDescription} name="description" placeholder="Describe the club here" />
                 <Row>
                   <Col xs={6} id={ComponentIDs.addProjectFormInterests}>
                     <SelectField name="interests" showInlineError placeholder="Interests" multiple checkboxes transform={transform} />
-                  </Col>
-                  <Col xs={6} id={ComponentIDs.addProjectFormParticipants}>
-                    <SelectField name="participants" showInlineError placeholder="Participants" multiple checkboxes transform={transform} />
                   </Col>
                 </Row>
                 <SubmitField id={ComponentIDs.addProjectFormSubmit} value="Submit" />
