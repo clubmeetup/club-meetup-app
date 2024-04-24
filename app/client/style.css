@@ -63,3 +63,16 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+.carousel-caption-custom {
+  position: absolute;
+  top: 1px;  /* Center vertically */
+  transform: translate(345px,20px); /* Adjust to exact center */
+  width: 15%; /* Width can be auto, or you can specify a width */
+  height: 15%;
+  background-color: rgba(0, 0, 0, 0.5); /* Optional styling */
+  color: white; /* Text color */
+  padding: 10px; /* Padding around text */
+  text-align: center; /* Center-align the text */
+  border-radius: 10px; /* Optional styling for rounded corners */
+}
+
