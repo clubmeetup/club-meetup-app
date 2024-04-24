@@ -1,66 +1,53 @@
 import React from 'react';
-import swal from 'sweetalert';
-import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, HiddenField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import { AutoForm, TextField, LongTextField, SubmitField, ErrorsField } from 'uniforms-bootstrap5';
+import { useParams } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { useParams } from 'react-router';
 import { Projects } from '../../api/projects/Projects';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const bridge = new SimpleSchema2Bridge(Projects.schema);
 
-/* Renders the EditClub page for editing a single document. */
 const EditClub = () => {
-  // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const { _id } = useParams();
-  // console.log('EditClub', _id);
-  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { doc, ready } = useTracker(() => {
-    // Get access to Contact documents.
-    const subscription = Meteor.subscribe(Projects.userPublicationName);
-    // Determine if the subscription is ready
-    const rdy = subscription.ready();
-    // Get the document
-    const document = Projects.collection.findOne(_id);
+  const { doc, isLoading } = useTracker(() => {
+    const subscription = Meteor.subscribe('project', _id);
     return {
-      doc: document,
-      ready: rdy,
+      doc: Projects.collection.findOne(_id),
+      isLoading: !subscription.ready(),
     };
   }, [_id]);
-  // console.log('EditClub', doc, ready);
-  // On successful submit, insert the data.
-  const submit = (data) => {
-    const { firstName, lastName, address, image, description } = data;
-    Projects.collection.update(_id, { $set: { firstName, lastName, address, image, description } }, (error) => (error ?
-      swal('Error', error.message, 'error') :
-      swal('Success', 'Item updated successfully', 'success')));
+
+  const handleSubmit = (data) => {
+    Projects.collection(_id, { $set: data }, (error) => {
+      if (error) {
+        // eslint-disable-next-line no-alert
+        alert(`Update failed: ${error.message}`);
+      } else {
+        // eslint-disable-next-line no-alert
+        alert('Project updated successfully!');
+      }
+    });
   };
 
-  return ready ? (
+  return !isLoading ? (
     <Container className="py-3">
       <Row className="justify-content-center">
-        <Col xs={10}>
-          <Col className="text-center"><h2>Edit Contact</h2></Col>
-          <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
-            <Card>
-              <Card.Body>
-                <Row>
-                  <Col><TextField name="firstName" /></Col>
-                  <Col><TextField name="lastName" /></Col>
-                </Row>
-                <Row>
-                  <Col><TextField name="address" /></Col>
-                  <Col><TextField name="image" /></Col>
-                </Row>
+        <Col xs={12} md={8}>
+          <Card>
+            <Card.Body>
+              <AutoForm schema={bridge} onSubmit={handleSubmit} model={doc}>
+                <TextField name="name" />
+                <TextField name="homepage" />
                 <LongTextField name="description" />
-                <SubmitField value="Submit" />
+                <TextField name="picture" />
+                <SubmitField value="Update Project" />
                 <ErrorsField />
-                <HiddenField name="owner" />
-              </Card.Body>
-            </Card>
-          </AutoForm>
+              </AutoForm>
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
     </Container>
