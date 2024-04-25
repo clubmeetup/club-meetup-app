@@ -22,6 +22,11 @@ function getProjectData(name) {
   return _.extend({}, data, { interests, participants: profilePictures });
 }
 
+Projects.collection.allow({
+  remove: function (userId, doc) {
+    // Only allow deleting if the user is logged in and the document belongs to the user
+    return userId && doc.ownerId === userId;
+
 const MakeCard = ({ project }) => {
   const navigate = useNavigate();
 
