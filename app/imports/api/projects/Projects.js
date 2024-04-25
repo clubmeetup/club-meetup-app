@@ -26,6 +26,10 @@ class ProjectsCollection {
         // Allow update if the user is logged in
         return !!userId;
       },
+      remove(userId) {
+        // Allow removal if the user is logged in
+        return !!userId;
+      },
     });
   }
 }
