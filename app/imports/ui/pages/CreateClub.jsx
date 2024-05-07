@@ -32,6 +32,7 @@ const CreateClubForm = () => {
     <div>
       <h1>Create New Club</h1>
       <form onSubmit={handleSubmit}>
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label htmlFor="name">Name:</label>
         <input
           type="text"
