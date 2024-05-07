@@ -19,6 +19,7 @@ import Filter from '../pages/Filter';
 import AddProject from '../pages/AddProject';
 import FeatureRequest from '../pages/FeatureRequest';
 import EditClub from '../pages/EditClub';
+import Community from '../pages/Community';
 
 /* Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -34,6 +35,7 @@ const App = () => (
         <Route path="/profiles" element={<Profiles />} />
         <Route path="/clublist" element={<Projects />} />
         <Route path="/club" element={<Club />} />
+        <Route path="/community" element={<Community />} />
         <Route path="/editclub/:_id" element={<EditClub />} />
         <Route path="/featurerequest" element={<FeatureRequest />} />
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
