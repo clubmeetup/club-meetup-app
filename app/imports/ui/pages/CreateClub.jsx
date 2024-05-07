@@ -41,6 +41,7 @@ const CreateClubForm = () => {
           onChange={handleInputChange}
           required
         /><br /><br />
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label htmlFor="description">Description:</label>
         <textarea
           id="description"
@@ -49,6 +50,7 @@ const CreateClubForm = () => {
           onChange={handleInputChange}
           required
         /><br /><br />
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label htmlFor="pictureUrl">Picture URL:</label>
         <input
           type="url"
