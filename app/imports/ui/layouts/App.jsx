@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Club from '../pages/Club';
 import Footer from '../components/Footer';
@@ -36,8 +37,8 @@ const App = () => (
         <Route path="/clublist" element={<Projects />} />
         <Route path="/club" element={<Club />} />
         <Route path="/community" element={<Community />} />
-        <Route path="/editclub/:_id" element={<EditClub />} />
-        <Route path="/featurerequest" element={<FeatureRequest />} />
+        <Route path="/editclub/:_id" element={<AdminProtectedRoute><EditClub /></AdminProtectedRoute>} />
+        <Route path="/featurerequest" element={<ProtectedRoute><FeatureRequest /></ProtectedRoute>} />
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/filter" element={<ProtectedRoute><Filter /></ProtectedRoute>} />
         <Route path="/addclub" element={<ProtectedRoute><AddProject /></ProtectedRoute>} />
@@ -50,21 +51,39 @@ const App = () => (
 );
 
 /*
- * ProtectedRoute (see React Router v6 sample)
- * Checks for Meteor login before routing to the requested page, otherwise goes to signin page.
- * @param {any} { component: Component, ...rest }
+ * ProtectedRoute checks for Meteor login before routing to the requested page,
+ * otherwise redirects to the signin page.
  */
 const ProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
   return isLogged ? children : <Navigate to="/signin" />;
 };
 
-// Require a component and location to be passed to each ProtectedRoute.
+/*
+ * AdminProtectedRoute checks if the logged in user is an admin,
+ * if not, redirects to not authorized page.
+ */
+const AdminProtectedRoute = ({ children }) => {
+  const isLogged = Meteor.userId() !== null;
+  const isAdmin = isLogged && Roles.userIsInRole(Meteor.userId(), ['admin']);
+  return isAdmin ? children : <Navigate to="/notauthorized" />;
+};
+
+// PropTypes for the ProtectedRoute component
 ProtectedRoute.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
 ProtectedRoute.defaultProps = {
+  children: <Home />,
+};
+
+// PropTypes for the AdminProtectedRoute component
+AdminProtectedRoute.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+};
+
+AdminProtectedRoute.defaultProps = {
   children: <Home />,
 };
 

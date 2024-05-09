@@ -1,40 +1,53 @@
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import { Interests } from '../../api/interests/Interests';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
-import SomeCollection from 'core-js/internals/array-iteration';
 
-/** Define a publication to publish all interests. */
-Meteor.publish(Interests.userPublicationName, () => Interests.collection.find());
+/** Publish all interests */
+Meteor.publish(Interests.userPublicationName, () => {
+  return Interests.collection.find();
+});
 
-/** Define a publication to publish all profiles. */
-Meteor.publish(Profiles.userPublicationName, () => Profiles.collection.find());
+/** Publish all profiles */
+Meteor.publish(Profiles.userPublicationName, () => {
+  return Profiles.collection.find();
+});
 
-/** Define a publication to publish this collection. */
-Meteor.publish(ProfilesInterests.userPublicationName, () => ProfilesInterests.collection.find());
+/** Publish profile interests */
+Meteor.publish(ProfilesInterests.userPublicationName, () => {
+  return ProfilesInterests.collection.find();
+});
 
-/** Define a publication to publish this collection. */
-Meteor.publish(ProfilesProjects.userPublicationName, () => ProfilesProjects.collection.find());
+/** Publish profile projects */
+Meteor.publish(ProfilesProjects.userPublicationName, () => {
+  return ProfilesProjects.collection.find();
+});
 
-/** Define a publication to publish all projects. */
-Meteor.publish(Projects.userPublicationName, () => Projects.collection.find());
+/** Publish all projects */
+Meteor.publish(Projects.userPublicationName, () => {
+  return Projects.collection.find();
+});
 
-/** Define a publication to publish this collection. */
-Meteor.publish(ProjectsInterests.userPublicationName, () => ProjectsInterests.collection.find());
+/** Publish project interests */
+Meteor.publish(ProjectsInterests.userPublicationName, () => {
+  return ProjectsInterests.collection.find();
+});
 
-// alanning:roles publication
-// Recommended code to publish roles for each user.
-Meteor.publish('someAdminPublication', function () {
-  if (Roles.userIsInRole(this.userId, 'super admin')) {
-    // publish everything for super admin
-    return SomeCollection.find();
-  } if (Roles.userIsInRole(this.userId, 'admin')) {
-    // publish only documents where this user is listed as an admin
-    return SomeCollection.find({ admins: this.userId });
+/** Admin-specific publications, assumes admin roles have been set correctly */
+Meteor.publish('adminProjects', function () {
+  if (!this.userId) {
+    return this.ready();
   }
-  this.stop();
-  return;
+
+  if (Roles.userIsInRole(this.userId, ['super admin', 'admin'])) {
+    // Super admins and admins get access to all projects
+    return Projects.collection.find();
+  } else {
+    // Only publish projects where the user is involved if not an admin
+    return Projects.collection.find({ members: this.userId });
+  }
 });
