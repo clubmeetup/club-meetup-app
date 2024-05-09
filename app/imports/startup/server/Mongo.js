@@ -11,11 +11,16 @@ import { Interests } from '../../api/interests/Interests';
 /* eslint-disable no-console */
 
 /** Define a user in the Meteor accounts package. This enables login. Username is the email address. */
-function createUser(email, role) {
-  const userID = Accounts.createUser({ username: email, email, password: 'foo' });
-  if (role === 'admin') {
-    Roles.createRole(role, { unlessExists: true });
-    Roles.addUsersToRoles(userID, 'admin');
+function createUser(email, password, role) {
+  // Create the user with a password. (Make sure to replace 'password' with the actual user password)
+  const userID = Accounts.createUser({ username: email, email, password });
+
+  // Create roles if they don't exist
+  ['user', 'admin', 'super admin'].forEach(r => Roles.createRole(r, { unlessExists: true }));
+
+  // Assign the user to the role
+  if (role) {
+    Roles.addUsersToRoles(userID, role);
   }
 }
 
@@ -27,15 +32,18 @@ function addInterest(interest) {
 /** Defines a new user and associated profile. Error if user already exists. */
 function addProfile({ firstName, lastName, bio, title, interests, projects, picture, email, role }) {
   console.log(`Defining profile ${email}`);
-  // Define the user in the Meteor accounts package.
-  createUser(email, role);
-  // Create the profile.
-  Profiles.collection.insert({ firstName, lastName, bio, title, picture, email });
+  // Define the user in the Meteor accounts package with the role.
+  createUser(email, 'password-for-new-user', role); // Replace with a secure password or a password generation method
+
+  // Create the profile with the role.
+  Profiles.collection.insert({ firstName, lastName, bio, title, picture, email, role });
+
   // Add interests and projects.
-  interests.map(interest => ProfilesInterests.collection.insert({ profile: email, interest }));
-  projects.map(project => ProfilesProjects.collection.insert({ profile: email, project }));
-  // Make sure interests are defined in the Interests collection if they weren't already.
-  interests.map(interest => addInterest(interest));
+  interests.forEach(interest => ProfilesInterests.collection.insert({ profile: email, interest }));
+  projects.forEach(project => ProfilesProjects.collection.insert({ profile: email, project }));
+
+  // Ensure interests are defined in the Interests collection.
+  interests.forEach(interest => addInterest(interest));
 }
 
 /** Define a new project. Error if project already exists.  */

@@ -10,6 +10,12 @@ class ProfilesCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
+      role: {
+        type: String,
+        allowedValues: ['user', 'admin', 'super admin'],
+        defaultValue: 'user',
+        optional: false,
+      },
       email: { type: String, index: true, unique: true },
       firstName: { type: String, optional: true },
       lastName: { type: String, optional: true },

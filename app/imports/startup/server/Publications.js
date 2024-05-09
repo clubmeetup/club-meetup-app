@@ -5,6 +5,7 @@ import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
+import SomeCollection from 'core-js/internals/array-iteration';
 
 /** Define a publication to publish all interests. */
 Meteor.publish(Interests.userPublicationName, () => Interests.collection.find());
@@ -26,9 +27,14 @@ Meteor.publish(ProjectsInterests.userPublicationName, () => ProjectsInterests.co
 
 // alanning:roles publication
 // Recommended code to publish roles for each user.
-Meteor.publish(null, function () {
-  if (this.userId) {
-    return Meteor.roleAssignment.find({ 'user._id': this.userId });
+Meteor.publish('someAdminPublication', function () {
+  if (Roles.userIsInRole(this.userId, 'super admin')) {
+    // publish everything for super admin
+    return SomeCollection.find();
+  } if (Roles.userIsInRole(this.userId, 'admin')) {
+    // publish only documents where this user is listed as an admin
+    return SomeCollection.find({ admins: this.userId });
   }
-  return this.ready();
+  this.stop();
+  return;
 });
