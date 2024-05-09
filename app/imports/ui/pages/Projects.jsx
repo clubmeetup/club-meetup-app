@@ -22,9 +22,17 @@ function getProjectData(name) {
   return _.extend({}, data, { interests, participants: profilePictures });
 }
 
+// Allow method for Projects.collection
+Projects.collection.allow({
+  remove: function (userId, doc) {
+    // Only allow deleting if the user is logged in and the document belongs to the user
+    return userId && doc.ownerId === userId;
+  },
+});
+
+// MakeCard component
 const MakeCard = ({ project }) => {
   const navigate = useNavigate();
-
   const handleEdit = () => {
     // eslint-disable-next-line react/prop-types
     navigate(`/editclub/${project._id}`);
@@ -54,8 +62,11 @@ MakeCard.propTypes = {
     picture: PropTypes.string,
     title: PropTypes.string,
     interests: PropTypes.arrayOf(PropTypes.string),
+
   }).isRequired,
 };
+
+// Existing code for ProjectsPage remains the same
 
 /* Renders the Project Collection as a set of Cards. */
 const ProjectsPage = () => {
