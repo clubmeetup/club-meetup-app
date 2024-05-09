@@ -23,9 +23,6 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls={ComponentIDs.basicNavbarNav} />
         <Navbar.Collapse id={ComponentIDs.basicNavbarNav}>
           <Nav className="me-auto justify-content-start">
-            {currentUser ? (
-              <Nav.Link as={NavLink} id={ComponentIDs.homeMenuItem} to="/home" key="home">Home</Nav.Link>
-            ) : ''}
             <Nav.Link as={NavLink} id={ComponentIDs.projectsMenuItem} to="/clublist" key="projects">Club List</Nav.Link>
             <Nav.Link as={NavLink} to="/club" key="club">Club Directory</Nav.Link>
             <Nav.Link as={NavLink} to="/community" key="community">Community Guidelines</Nav.Link>
@@ -33,7 +30,8 @@ const NavBar = () => {
             <Nav.Link as={NavLink} id={ComponentIDs.projectsMenuItem} to="/featurerequest" key="featurerequest">Feature Request</Nav.Link>
             {currentUser ? (
               [<Nav.Link as={NavLink} id={ComponentIDs.addProjectMenuItem} to="/addclub" key="addP">Add Clubs</Nav.Link>,
-                <Nav.Link as={NavLink} id={ComponentIDs.filterMenuItem} to="/filter" key="filter">Filter</Nav.Link>]
+                <Nav.Link as={NavLink} id={ComponentIDs.filterMenuItem} to="/filter" key="filter">Filter</Nav.Link>,
+                <Nav.Link as={NavLink} id={ComponentIDs.homeMenuItem} to="/home" key="home">Your Profile</Nav.Link>]
             ) : ''}
           </Nav>
           <Nav className="justify-content-end">
