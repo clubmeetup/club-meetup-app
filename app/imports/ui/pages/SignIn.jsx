@@ -6,19 +6,16 @@ import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Roles } from 'meteor/alanning:roles';
-import { useTracker } from 'meteor/react-meteor-data';
 import { ComponentIDs, PageIDs } from '../utilities/ids';
 
+/*
+ * Signin page overrides the form’s submit event and calls Meteor’s loginWithPassword().
+ * Authentication errors modify the component’s state to be displayed.
+ */
 const SignIn = () => {
   const [error, setError] = useState('');
   const [redirect, setRedirect] = useState(false);
-
-  // Reactive user data and roles fetch
-  const user = useTracker(() => Meteor.user(), []);
-  const userRole = useTracker(() => {
-    if (!user) return '';
-    return Roles.getRolesForUser(user?._id)[0]; // Ensure roles are available
-  }, [user]);
+  const [userRole, setUserRole] = useState('');
 
   const schema = new SimpleSchema({
     email: String,
@@ -33,6 +30,8 @@ const SignIn = () => {
       if (err) {
         setError(err.reason);
       } else {
+        const role = Roles.getRolesForUser(Meteor.userId())[0]; // Assuming a single role per user
+        setUserRole(role);
         setRedirect(true);
       }
     });
@@ -40,14 +39,14 @@ const SignIn = () => {
 
   // Redirect based on user role
   useEffect(() => {
-    if (redirect && user) {
-      if (userRole === 'admin' || userRole === 'super admin') {
+    if (redirect) {
+      if (userRole === 'admin') {
         window.location.href = '/admin/dashboard'; // Adjust as needed
       } else {
         window.location.href = '/home'; // Adjust as needed
       }
     }
-  }, [redirect, user, userRole]);
+  }, [redirect, userRole]);
 
   // Render the signin form.
   if (redirect) {
@@ -55,6 +54,7 @@ const SignIn = () => {
     return null;
   }
 
+  // Otherwise return the Login form.
   return (
     <Container id={PageIDs.signInPage}>
       <Row className="justify-content-center">
