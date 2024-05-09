@@ -42,10 +42,10 @@ body {
   /* Correct syntax for a linear gradient background */
   background: linear-gradient(to bottom, #024731, #56ab2f);
   object-fit: cover;
-  /* Continue with the rest of your styles */
+
 }
 .custom-padding {
-  padding: 20px; /* Adjust the padding as needed */
+  padding: 20px;
 }
 .reset-margins {
   margin-top: 0;
@@ -53,9 +53,9 @@ body {
 }
 
 .carousel img {
-  width: 100%; /* Makes the image responsive */
-  height: 500px; /* Adjust the height as needed */
-  object-fit: contain; /* Ensures the image covers the area without stretching */
+  width: 100%;
+  height: 500px;
+  object-fit: contain;
 }
 
 * {
