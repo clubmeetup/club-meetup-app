@@ -1,4 +1,4 @@
-name: ci-bowfolios
+name: ci-clubup
 
 on:
   push:
